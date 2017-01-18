@@ -29,11 +29,11 @@ module.exports = {
                 var _startMinute;
                 var _endMinute;
 
-                for(var h = startHour; h <= endHour; h++) {
+                for(let h = startHour; h <= endHour; h++) {
                     _startMinute = startHour === h ? startMinute : 0;
                     _endMinute = h !== endHour ? MINUTES_COUNT : endMinute - 1;
 
-                    for(var m = _startMinute; m <= _endMinute; m++) {
+                    for(let m = _startMinute; m <= _endMinute; m++) {
                         busyList[h][m] = 1;
                     }
                 }
@@ -46,17 +46,17 @@ module.exports = {
         var resultHour = null;
         var resultMinute = null;
 
-        for(var h1 in busyList) {
-            for(var m1 in busyList[h1]) {
-                if (busyList[h1][m1]) {
+        for(let h in busyList) {
+            for(let m in busyList[h]) {
+                if (busyList[h][m]) {
                     _duration = duration;
                     resultHour = null;
                     resultMinute = null;
 
                     continue;
                 } else {
-                    resultHour = resultHour || h1;
-                    resultMinute = resultMinute || m1;
+                    resultHour = resultHour || h;
+                    resultMinute = resultMinute || m;
 
                     _duration = _duration - 1;
 
