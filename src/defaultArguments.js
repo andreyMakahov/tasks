@@ -1,24 +1,27 @@
-function defaultArguments(func, params) {
-    var argumentsOrder = func._argumentsOrder || getParamNames(func);
+module.exports = {
+    getParamNames: getParamNames,
+    defaultArguments: function (func, params) {
+        var argumentsOrder = func._argumentsOrder || getParamNames(func);
 
-    var resultFn = function() {
-        var argArray = [];
-        var args = arguments;
-        argumentsOrder.forEach(function(currentValue, index) {
-            if (args.length > index) {
-                argArray.push(args[index]);
-            } else {
-                argArray.push(params[currentValue]);
-            }
-        });
+        var resultFn = function() {
+            var argArray = [];
+            var args = arguments;
+            argumentsOrder.forEach(function(currentValue, index) {
+                if (args.length > index) {
+                    argArray.push(args[index]);
+                } else {
+                    argArray.push(params[currentValue]);
+                }
+            });
 
-        return func.apply(null, argArray);
-    };
+            return func.apply(null, argArray);
+        };
 
-    resultFn._argumentsOrder = argumentsOrder;
+        resultFn._argumentsOrder = argumentsOrder;
 
-    return resultFn;
-}
+        return resultFn;
+    }
+};
 
 function getParamNames(func) {
     var result;

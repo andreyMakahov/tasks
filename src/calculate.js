@@ -1,6 +1,6 @@
-function calculate(num1, num2) {
+module.exports = function calculate(num1, num2) {
     return binToDec(num1) + binToDec(num2);
-}
+};
 
 function binToDec(num) {
     return num.split('').reverse().reduce(function(preview, current, index) {
