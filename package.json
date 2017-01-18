@@ -1,0 +1,26 @@
+{
+  "name": "tasks",
+  "version": "1.0.0",
+  "description": "tasks",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^3.2.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreyMakahov/tasks.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andreyMakahov/tasks/issues"
+  },
+  "homepage": "https://github.com/andreyMakahov/tasks#readme"
+}
