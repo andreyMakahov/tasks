@@ -11,9 +11,20 @@ describe('Default Arguments', function() {
     });
 
     it('testing getParamNames function with comments', function() {
-        function add(a, /* b parameter should be a function */ b) { return b(a); }
+        function fn(a, b) { return b(a); }
+        function fnWithComments(a, /* b parameter should be a function */ b, c) { return b(a); }
+        function fnWithCommentsInSource(a, /* b parameter should be a function */ b, c, d) {
+            // some comment
 
-        assert.deepEqual(getParamNames(add), ['a', 'b'])
+            /*
+             *   another comment
+             */
+            return b(a);
+        }
+
+        assert.deepEqual(getParamNames(fn), ['a', 'b']);
+        assert.deepEqual(getParamNames(fnWithComments), ['a', 'b', 'c']);
+        assert.deepEqual(getParamNames(fnWithCommentsInSource), ['a', 'b', 'c', 'd']);
     });
 
     it('testing default arguments decorator', function() {
